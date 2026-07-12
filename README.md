@@ -1,6 +1,6 @@
 # homelab-docs
 
-Documentation for my enterprise-simulating home lab - VMware ESXi, Active Directory, TrueNAS, and a 10GbE MikroTik backbone - built from the ground up and documented as I go.
+Documentation for my enterprise simulating home lab - VMware ESXi, Active Directory, TrueNAS, and a 10GbE MikroTik backbone - built from the ground up and documented as I go.
 
 Start here: [Home.md](Home.md)
 
