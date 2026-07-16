@@ -11,7 +11,6 @@ Study session only, no lab changes. Worked through the Lab Networking Study Guid
 - On a switch there is no such thing as "no VLAN." Untagged traffic belongs to the default VLAN (VLAN 1 on most gear). Out of the factory every port is an untagged member of VLAN 1, which is why the switch behaves like one open room.
 - Building VLAN 10 did not create the concept of rooms. It built a second room next to the one that always existed.
 - Precision point: a broadcast is stopped by the layer 2 boundary (the VLAN wall), not by subnet numbering. In a well built network segments and subnets line up one to one, but the wall is what physically stops the frame.
-
 ### How devices ignore traffic - two different mechanisms
 
 - Unicast: filtered by the switch. The MAC table delivers the frame to one port only. Other devices never see it.
