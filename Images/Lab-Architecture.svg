@@ -1,0 +1,109 @@
+<svg viewBox="0 0 1040 760" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1040" height="760" fill="#ffffff"/>
+
+  <text x="520" y="38" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">Enterprise Lab - Architecture Overview</text>
+  <text x="520" y="63" text-anchor="middle" font-size="13.5" fill="#475569">Segmented Active Directory environment on VMware ESXi, built to mirror enterprise network and identity patterns.</text>
+
+  <!-- Internet -->
+  <rect x="475" y="82" width="90" height="30" rx="15" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2"/>
+  <text x="520" y="102" text-anchor="middle" font-size="12" fill="#475569">Internet</text>
+  <line x1="520" y1="112" x2="520" y2="130" stroke="#94a3b8" stroke-width="1.3"/>
+
+  <!-- Router -->
+  <rect x="445" y="130" width="150" height="48" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.4"/>
+  <text x="520" y="150" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Home Router</text>
+  <text x="520" y="167" text-anchor="middle" font-size="10" fill="#94a3b8">(temporary - replaced on move)</text>
+  <line x1="520" y1="178" x2="520" y2="210" stroke="#94a3b8" stroke-width="1.3"/>
+  <text x="534" y="197" font-size="10.5" fill="#64748b">uplink (ether1)</text>
+
+  <!-- MikroTik -->
+  <rect x="270" y="210" width="500" height="82" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text x="520" y="236" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">MikroTik CRS310-8G+2S+IN</text>
+  <text x="520" y="257" text-anchor="middle" font-size="12" fill="#c2410c">core switch: 802.1Q VLAN trunking and filtering</text>
+  <text x="520" y="276" text-anchor="middle" font-size="12" fill="#c2410c">DHCP relay  -  inter-VLAN firewall (default-deny)</text>
+
+  <!-- connectors from switch -->
+  <line x1="450" y1="292" x2="360" y2="352" stroke="#64748b" stroke-width="1.6"/>
+  <text x="250" y="318" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">10GbE SFP+ DAC (trunk)</text>
+  <text x="250" y="334" text-anchor="middle" font-size="10.5" fill="#64748b">VLAN 10 + 20, plus 2.5GbE mgmt</text>
+
+  <line x1="600" y1="292" x2="810" y2="352" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="835" y="322" text-anchor="middle" font-size="10.5" fill="#94a3b8">planned: VLAN 30 storage link</text>
+
+  <!-- MS-01 container -->
+  <rect x="50" y="356" width="590" height="380" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="345" y="382" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">Minisforum MS-01  -  VMware ESXi 8.0 U3</text>
+  <text x="345" y="402" text-anchor="middle" font-size="11.5" fill="#64748b">Intel i9-13900H  |  64GB DDR5  |  Samsung 990 PRO 2TB NVMe (VMFS6 datastore)</text>
+
+  <!-- vSwitch bar -->
+  <rect x="70" y="422" width="550" height="44" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="90" y="442" font-size="12.5" font-weight="700" fill="#5b21b6">vSwitch-Lab</text>
+  <text x="90" y="458" font-size="11" fill="#6d28d9">uplink: vmnic1 (10GbE DAC)  -  tagged port groups per VLAN</text>
+
+  <!-- port group tags -->
+  <line x1="200" y1="466" x2="200" y2="478" stroke="#2563eb" stroke-width="1.3"/>
+  <rect x="140" y="478" width="130" height="24" rx="4" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="205" y="494" text-anchor="middle" font-size="10.5" fill="#1e3a8a">Lab-VLAN10 (id 10)</text>
+  <line x1="205" y1="502" x2="205" y2="516" stroke="#2563eb" stroke-width="1.3"/>
+
+  <line x1="470" y1="466" x2="470" y2="478" stroke="#16a34a" stroke-width="1.3"/>
+  <rect x="410" y="478" width="130" height="24" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="475" y="494" text-anchor="middle" font-size="10.5" fill="#14532d">Lab-VLAN20 (id 20)</text>
+  <line x1="475" y1="502" x2="475" y2="516" stroke="#16a34a" stroke-width="1.3"/>
+
+  <!-- DC01 -->
+  <rect x="90" y="516" width="230" height="170" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="205" y="542" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">DC01</text>
+  <text x="205" y="562" text-anchor="middle" font-size="11.5" fill="#1d4ed8">Windows Server 2025</text>
+  <text x="205" y="583" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d4ed8">VLAN 10 - Servers</text>
+  <text x="205" y="606" text-anchor="middle" font-size="11" fill="#1d4ed8">AD DS forest: landon.lab</text>
+  <text x="205" y="624" text-anchor="middle" font-size="11" fill="#1d4ed8">DNS + DHCP (both scopes)</text>
+  <text x="205" y="642" text-anchor="middle" font-size="11" fill="#1d4ed8">10.0.10.10</text>
+
+  <!-- CLIENT01 -->
+  <rect x="390" y="516" width="230" height="170" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="505" y="542" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">CLIENT01</text>
+  <text x="505" y="562" text-anchor="middle" font-size="11.5" fill="#166534">Windows 11 Enterprise</text>
+  <text x="505" y="583" text-anchor="middle" font-size="11.5" font-weight="700" fill="#166534">VLAN 20 - Clients</text>
+  <text x="505" y="606" text-anchor="middle" font-size="11" fill="#166534">domain-joined to landon.lab</text>
+  <text x="505" y="624" text-anchor="middle" font-size="11" fill="#166534">DHCP via relay: 10.0.20.100</text>
+  <text x="505" y="642" text-anchor="middle" font-size="11" fill="#166534">standard + admin accounts</text>
+
+  <text x="345" y="712" text-anchor="middle" font-size="11" font-style="italic" fill="#64748b">Management plane: vmk0 on vmnic3 (2.5GbE copper), kept separate from 10GbE lab traffic.</text>
+
+  <!-- NAS -->
+  <rect x="680" y="356" width="310" height="176" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="835" y="382" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">UGREEN DXP2800</text>
+  <text x="835" y="404" text-anchor="middle" font-size="11.5" fill="#64748b">TrueNAS storage server (planned)</text>
+  <text x="835" y="428" text-anchor="middle" font-size="11" fill="#64748b">2x WD Red Plus 4TB  -  ZFS mirror</text>
+  <text x="835" y="448" text-anchor="middle" font-size="11" fill="#64748b">NFS / iSCSI datastores for ESXi</text>
+  <text x="835" y="468" text-anchor="middle" font-size="11" fill="#64748b">AD-integrated SMB file shares</text>
+  <text x="835" y="496" text-anchor="middle" font-size="11" fill="#94a3b8">Tailscale remote access (parked)</text>
+
+  <!-- VLAN roadmap -->
+  <rect x="680" y="552" width="310" height="184" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.3"/>
+  <text x="835" y="578" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">VLAN Segmentation</text>
+
+  <circle cx="702" cy="602" r="5" fill="#16a34a"/>
+  <text x="716" y="606" font-size="11.5" fill="#334155">VLAN 10  -  Servers</text>
+  <text x="962" y="606" text-anchor="end" font-size="11" font-weight="600" fill="#16a34a">built</text>
+
+  <circle cx="702" cy="628" r="5" fill="#16a34a"/>
+  <text x="716" y="632" font-size="11.5" fill="#334155">VLAN 20  -  Clients</text>
+  <text x="962" y="632" text-anchor="end" font-size="11" font-weight="600" fill="#16a34a">built</text>
+
+  <circle cx="702" cy="654" r="5" fill="#cbd5e1"/>
+  <text x="716" y="658" font-size="11.5" fill="#334155">VLAN 30  -  Storage</text>
+  <text x="962" y="658" text-anchor="end" font-size="11" fill="#94a3b8">planned</text>
+
+  <circle cx="702" cy="680" r="5" fill="#cbd5e1"/>
+  <text x="716" y="684" font-size="11.5" fill="#334155">VLAN 99  -  Management</text>
+  <text x="962" y="684" text-anchor="end" font-size="11" fill="#94a3b8">planned</text>
+
+  <line x1="700" y1="702" x2="968" y2="702" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="708" cy="718" r="5" fill="#16a34a"/>
+  <text x="720" y="722" font-size="10.5" fill="#64748b">built</text>
+  <circle cx="790" cy="718" r="5" fill="#cbd5e1"/>
+  <text x="802" y="722" font-size="10.5" fill="#64748b">planned / roadmap</text>
+  <text x="962" y="722" text-anchor="end" font-size="10.5" font-style="italic" fill="#94a3b8">dashed = not yet built</text>
+</svg>
