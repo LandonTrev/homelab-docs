@@ -1,0 +1,60 @@
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="g" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#16a34a"/>
+    </marker>
+    <marker id="b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="600" fill="#ffffff"/>
+
+  <text x="480" y="36" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Inter-VLAN DHCP Relay: The Round Trip</text>
+  <text x="480" y="60" text-anchor="middle" font-size="13.5" fill="#475569">A client in VLAN 20 gets its address from a server in VLAN 10, because the relay carries the request across.</text>
+
+  <!-- giaddr key callout -->
+  <rect x="250" y="80" width="460" height="62" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="480" y="104" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5b21b6">The key field: giaddr = 10.0.20.1 (the relay's VLAN 20 gateway)</text>
+  <text x="480" y="125" text-anchor="middle" font-size="12" fill="#6d28d9">The DC reads giaddr to choose the correct scope: VLAN 20 (10.0.20.100 to 200)</text>
+
+  <!-- boxes -->
+  <rect x="40" y="240" width="180" height="120" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="130" y="275" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">CLIENT01</text>
+  <text x="130" y="298" text-anchor="middle" font-size="12" fill="#166534">VLAN 20</text>
+  <text x="130" y="320" text-anchor="middle" font-size="12" fill="#166534">no IP yet,</text>
+  <text x="130" y="337" text-anchor="middle" font-size="12" fill="#166534">becomes 10.0.20.100</text>
+
+  <rect x="390" y="240" width="180" height="120" rx="10" fill="#f8fafc" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="480" y="275" text-anchor="middle" font-size="15" font-weight="700" fill="#5b21b6">MikroTik</text>
+  <text x="480" y="298" text-anchor="middle" font-size="12" fill="#6d28d9">DHCP relay</text>
+  <text x="480" y="320" text-anchor="middle" font-size="12" fill="#6d28d9">on vlan20 interface</text>
+  <text x="480" y="337" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7c3aed">2. sets giaddr</text>
+
+  <rect x="740" y="240" width="180" height="120" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="830" y="275" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">DC01</text>
+  <text x="830" y="298" text-anchor="middle" font-size="12" fill="#1d4ed8">VLAN 10, 10.0.10.10</text>
+  <text x="830" y="320" text-anchor="middle" font-size="12" fill="#1d4ed8">DHCP server</text>
+  <text x="830" y="337" text-anchor="middle" font-size="11.5" fill="#1d4ed8">scopes: VLAN 10 + 20</text>
+
+  <!-- gap 1 arrows (green, VLAN 20) -->
+  <line x1="224" y1="282" x2="386" y2="282" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+  <text x="305" y="272" text-anchor="middle" font-size="11.5" font-weight="600" fill="#166534">1. DHCP Discover (broadcast)</text>
+  <text x="305" y="234" text-anchor="middle" font-size="10.5" fill="#16a34a">VLAN 20 / tag 20</text>
+  <line x1="386" y1="318" x2="224" y2="318" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+  <text x="305" y="340" text-anchor="middle" font-size="11.5" font-weight="600" fill="#166534">5. Offer delivered to client</text>
+
+  <!-- gap 2 arrows (blue, VLAN 10) -->
+  <line x1="574" y1="282" x2="736" y2="282" stroke="#2563eb" stroke-width="2.2" marker-end="url(#b)"/>
+  <text x="655" y="272" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1d4ed8">3. Unicast to DC (giaddr set)</text>
+  <text x="655" y="234" text-anchor="middle" font-size="10.5" fill="#2563eb">VLAN 10 / tag 10</text>
+  <line x1="736" y1="318" x2="574" y2="318" stroke="#2563eb" stroke-width="2.2" marker-end="url(#b)"/>
+  <text x="655" y="340" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1d4ed8">4. DHCP Offer from DC</text>
+
+  <!-- result -->
+  <rect x="40" y="422" width="880" height="140" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.3"/>
+  <text x="60" y="450" font-size="14" font-weight="700" fill="#334155">6. Result - CLIENT01 receives its lease</text>
+  <text x="60" y="478" font-size="12.5" fill="#475569">IP address: 10.0.20.100    Subnet: 255.255.255.0    Gateway: 10.0.20.1    DNS: 10.0.10.10</text>
+  <text x="60" y="504" font-size="12.5" font-weight="700" fill="#334155">DHCP Server: 10.0.10.10  (this is the DC, over in VLAN 10)</text>
+  <text x="60" y="528" font-size="12.5" fill="#475569">That DHCP Server line is the proof: a client in VLAN 20 got its address from a server in VLAN 10, which is</text>
+  <text x="60" y="545" font-size="12.5" fill="#475569">only possible because the relay set giaddr and carried the request across the VLAN boundary.</text>
+</svg>

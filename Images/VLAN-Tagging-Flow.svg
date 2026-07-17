@@ -1,0 +1,77 @@
+<svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="620" fill="#ffffff"/>
+
+  <text x="480" y="38" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">VLAN Tagging: Where the Tag Lives</text>
+  <text x="480" y="64" text-anchor="middle" font-size="14" fill="#475569">The tag exists only on the trunk. Inside the client and inside the VLAN interface, frames are untagged.</text>
+
+  <rect x="452" y="118" width="488" height="150" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <text x="696" y="138" text-anchor="middle" font-size="13" font-weight="600" fill="#64748b">MikroTik CRS310 (bridge with VLAN filtering)</text>
+
+  <rect x="20" y="155" width="112" height="86" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="76" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#14532d">CLIENT01</text>
+  <text x="76" y="210" text-anchor="middle" font-size="11.5" fill="#166534">(VM, VLAN 20)</text>
+  <text x="76" y="228" text-anchor="middle" font-size="11" fill="#166534">untagged</text>
+
+  <rect x="152" y="155" width="128" height="86" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="216" y="185" text-anchor="middle" font-size="13" font-weight="600" fill="#14532d">ESXi port group</text>
+  <text x="216" y="203" text-anchor="middle" font-size="12" fill="#166534">Lab-VLAN20</text>
+  <text x="216" y="228" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">stamps tag 20</text>
+
+  <rect x="300" y="155" width="128" height="86" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+  <text x="364" y="188" text-anchor="middle" font-size="13" font-weight="600" fill="#92400e">SFP+ DAC trunk</text>
+  <text x="364" y="208" text-anchor="middle" font-size="11.5" fill="#b45309">frame carries</text>
+  <text x="364" y="226" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309">TAG 20</text>
+
+  <rect x="466" y="155" width="118" height="86" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.6"/>
+  <text x="525" y="188" text-anchor="middle" font-size="12.5" font-weight="600" fill="#92400e">sfp-sfpplus1</text>
+  <text x="525" y="207" text-anchor="middle" font-size="11" fill="#b45309">tagged member</text>
+  <text x="525" y="224" text-anchor="middle" font-size="11" fill="#b45309">of VLAN 20</text>
+
+  <rect x="602" y="155" width="112" height="86" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="658" y="186" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">Bridge</text>
+  <text x="658" y="205" text-anchor="middle" font-size="11" fill="#6d28d9">the doorman:</text>
+  <text x="658" y="221" text-anchor="middle" font-size="11" fill="#6d28d9">reads + strips tag</text>
+
+  <rect x="732" y="155" width="188" height="86" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="826" y="184" text-anchor="middle" font-size="13" font-weight="600" fill="#14532d">vlan20 interface</text>
+  <text x="826" y="202" text-anchor="middle" font-size="11.5" fill="#166534">the "room" - untagged</text>
+  <text x="826" y="222" text-anchor="middle" font-size="11.5" fill="#166534">gateway 10.0.20.1</text>
+
+  <line x1="132" y1="198" x2="150" y2="198" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="280" y1="198" x2="298" y2="198" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="428" y1="198" x2="464" y2="198" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="584" y1="198" x2="600" y2="198" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="714" y1="198" x2="730" y2="198" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <text x="20" y="332" font-size="13" font-weight="600" fill="#334155">Tag state along the path</text>
+  <rect x="20" y="344" width="272" height="34" fill="#e2e8f0"/>
+  <text x="156" y="366" text-anchor="middle" font-size="12" font-weight="600" fill="#475569">UNTAGGED</text>
+  <rect x="292" y="344" width="414" height="34" fill="#fde68a"/>
+  <text x="499" y="366" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">TAGGED (tag 20 present)</text>
+  <rect x="706" y="344" width="214" height="34" fill="#e2e8f0"/>
+  <text x="813" y="366" text-anchor="middle" font-size="12" font-weight="600" fill="#475569">UNTAGGED</text>
+
+  <line x1="292" y1="241" x2="292" y2="344" stroke="#b45309" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="706" y1="241" x2="706" y2="344" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <text x="292" y="400" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">STAMP: tag 20 applied</text>
+  <text x="706" y="400" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7c3aed">STRIP: tag 20 removed</text>
+
+  <rect x="20" y="428" width="900" height="72" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="34" y="452" font-size="13" font-weight="700" fill="#334155">Return trip (interface back to client): same boundaries, opposite actions</text>
+  <text x="34" y="474" font-size="12.5" fill="#475569">The bridge STAMPS tag 20 as the frame leaves the vlan20 interface toward the trunk. The ESXi port group STRIPS it</text>
+  <text x="34" y="491" font-size="12.5" fill="#475569">again before handing the clean frame to CLIENT01. A tag is applied fresh for each trunk crossing, never carried through.</text>
+
+  <text x="20" y="544" font-size="12" font-weight="600" fill="#334155">Key:</text>
+  <rect x="60" y="534" width="16" height="14" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="82" y="545" font-size="11.5" fill="#475569">VLAN 20 / untagged zone</text>
+  <rect x="252" y="534" width="16" height="14" fill="#fef3c7" stroke="#d97706"/>
+  <text x="274" y="545" font-size="11.5" fill="#475569">trunk / tagged zone</text>
+  <rect x="420" y="534" width="16" height="14" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="442" y="545" font-size="11.5" fill="#475569">bridge (stamp/strip point)</text>
+</svg>
